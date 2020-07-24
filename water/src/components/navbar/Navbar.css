@@ -1,0 +1,46 @@
+.navbar {
+  top: 0;
+  width: 100%;
+  background-color: lightskyblue;
+  display: flex;
+  height: 80px;
+}
+
+.brand {
+  margin: auto auto auto 10px;
+  font-size: 35px;
+  color: black;
+}
+
+.form-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+input {
+  padding: 15px;
+  width: 40vw;
+  border-radius: 5px;
+}
+#tgg-button {
+  display: none;
+}
+#image {
+  margin: auto 0px auto 10vw;
+}
+
+@media screen and (max-width: 650px) {
+  .brand {
+    display: none;
+  }
+  #image {
+    margin: auto 0px auto 2vw;
+  }
+  input {
+    width: 50vw;
+  }
+  #tgg-button {
+    display: block;
+  }
+}

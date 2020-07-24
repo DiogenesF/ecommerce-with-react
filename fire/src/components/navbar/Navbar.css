@@ -1,0 +1,34 @@
+.navbar {
+  top: 0;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  height: 80px;
+}
+
+.brand {
+  margin: auto auto auto 10px;
+  font-size: 35px;
+  color: white;
+}
+
+.form-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+input {
+  padding: 15px;
+  width: 40vw;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .brand {
+    display: none;
+  }
+  input {
+    width: 50vw;
+  }
+}

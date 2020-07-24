@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+}
+.grid-active {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+}
+
+@media screen and (max-width: 760px) {
+  .grid {
+    grid-template-columns: 3fr 5fr 3fr;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .grid-active {
+    grid-template-columns: 0fr 2fr 1fr;
+  }
+  .grid {
+    grid-template-columns: 1fr 2fr 0fr;
+  }
+}
