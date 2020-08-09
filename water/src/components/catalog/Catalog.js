@@ -1,6 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Interrogation from "../../images/interro.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import LazyLoad, { forceCheck } from "react-lazyload";
 
 import "./Catalog.css";
 
@@ -13,6 +15,10 @@ const Catalog = ({
   historico,
 }) => {
   const [toggle, setToggle] = useState("");
+
+  useEffect(() => {
+    forceCheck();
+  }, [searchedPokemons]);
 
   const handleAddToCart = (item) => {
     let exist = false;
@@ -72,8 +78,19 @@ const Catalog = ({
         {searchedPokemons.length > 0 ? (
           <Fragment>
             {searchedPokemons.map((each) => (
-              <Fragment key={each.id}>
-                <div className="catalog-card">
+              <div key={each.id} className="catalog-card">
+                <LazyLoad
+                  scrollContainer={".flex"}
+                  overflow
+                  height="100px"
+                  offset={-50}
+                  key={each.id}
+                  placeholder={
+                    <div className="loading">
+                      <h4>Loading</h4>
+                    </div>
+                  }
+                >
                   <img
                     alt=""
                     src={each.pic ? each.pic : Interrogation}
@@ -94,8 +111,8 @@ const Catalog = ({
                     />
                     Adicionar
                   </h3>
-                </div>
-              </Fragment>
+                </LazyLoad>
+              </div>
             ))}
           </Fragment>
         ) : (

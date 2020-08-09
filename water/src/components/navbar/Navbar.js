@@ -17,6 +17,7 @@ const Navbar = ({
     const filteredPokemons = allPokemons.filter((each) =>
       each.name.includes(e.target.value)
     );
+
     setSearchedPokemons(filteredPokemons);
   };
 

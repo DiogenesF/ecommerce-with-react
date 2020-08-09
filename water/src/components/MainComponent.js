@@ -6,6 +6,7 @@ import Filters from "./filters/Filters";
 import Cart from "./cart/Cart";
 
 import "./MainComponent.css";
+import { forceCheck } from "react-lazyload";
 
 function MainComponent() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -30,6 +31,10 @@ function MainComponent() {
       return a.price > b.price ? 1 : b.price > a.price ? -1 : 0;
     });
     setSearchedPokemons(cheaper);
+    setTimeout(() => {
+      forceCheck();
+      console.log("n");
+    }, 1000);
   };
 
   const handleMaiorPreco = () => {
@@ -43,6 +48,10 @@ function MainComponent() {
       return a.price < b.price ? 1 : b.price < a.price ? -1 : 0;
     });
     setSearchedPokemons(expensive);
+    setTimeout(() => {
+      forceCheck();
+      console.log("n");
+    }, 1000);
   };
 
   useEffect(() => {
@@ -51,32 +60,30 @@ function MainComponent() {
 
       let allpok = [];
       let srcpok = [];
-      someFunction();
-      async function someFunction() {
-        for (let i = 0; i < res.data.pokemon.length; i++) {
-          // o for loop so avanca quando a promise se resolve
-          const pics = await axios.get(res.data.pokemon[i].pokemon.url);
-          allpok.push({
-            id: Math.random() * 10000,
-            name: res.data.pokemon[i].pokemon.name,
-            price: Math.floor(Math.random() * 100) + 2,
-            pic: pics.data.sprites.front_default
-              ? pics.data.sprites.front_default
-              : pics.data.sprites.front_shiny,
-          });
-          srcpok.push({
-            id: Math.random() * 10000,
-            name: res.data.pokemon[i].pokemon.name,
-            price: Math.floor(Math.random() * 100) + 2,
-            pic: pics.data.sprites.front_default
-              ? pics.data.sprites.front_default
-              : pics.data.sprites.front_shiny,
-          });
-          if (i === res.data.pokemon.length - 1) {
-            setLoading(false);
-            setSearchedPokemons(srcpok);
-            setAllPokemons(allpok);
-          }
+
+      for (let i = 0; i < res.data.pokemon.length; i++) {
+        // o for loop so avanca quando a promise se resolve
+        const pics = await axios.get(res.data.pokemon[i].pokemon.url);
+        allpok.push({
+          id: Math.random() * 10000,
+          name: res.data.pokemon[i].pokemon.name,
+          price: Math.floor(Math.random() * 100) + 2,
+          pic: pics.data.sprites.front_default
+            ? pics.data.sprites.front_default
+            : pics.data.sprites.front_shiny,
+        });
+        srcpok.push({
+          id: Math.random() * 10000,
+          name: res.data.pokemon[i].pokemon.name,
+          price: Math.floor(Math.random() * 100) + 2,
+          pic: pics.data.sprites.front_default
+            ? pics.data.sprites.front_default
+            : pics.data.sprites.front_shiny,
+        });
+        if (i === res.data.pokemon.length - 1) {
+          setLoading(false);
+          setSearchedPokemons(srcpok);
+          setAllPokemons(allpok);
         }
       }
     };
@@ -114,7 +121,6 @@ function MainComponent() {
             totalPrice={totalPrice}
             setTotalPrice={setTotalPrice}
             searchedPokemons={searchedPokemons}
-            setSearchedPokemons={setSearchedPokemons}
             historico={historico}
           />
         )}
