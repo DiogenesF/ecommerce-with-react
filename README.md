@@ -1,22 +1,18 @@
-# b2wdigital-ecommerce-desafio
-### As páginas com os temas de `água` e `fogo` possuem o mesmo layout, mudando apenas as cores da página e algumas funcionalidades a mais que a página com tema de água possue.
+# ecommerce-with-react
+### The directories 'água' (water) and 'fogo' (fire) contains the app in React. Both are the same app, just changing the colors, also, the 'água' project has more features.
 
-A aplicação é a representação simplificada do front-end de um e-commerce utilizando React.
-Para ter dados para serem exibidos, foi-se utilizada a API https://pokeapi.co/.
+The app is a simple ecommerce built using react.
+The API https://pokeapi.co/ was used to fetch data
 
-Foi-se utilizado também o localStorage para gravar a suposta última compra realizada pelo usuário na plataforma (apenas na página com tema água).
+It was also used the localStorage to store the supposed last acquisition by the user in the platform.
 
-A aplicação utiliza técnicas de melhora em perfomance, como React.memo para evitar re-renderizações desnecessárias e utilização de Lazy loading para carregar apenas os itens do catálogo que estão visíveis ao usuário.
+The app makes use of techniques to improve the performance, as React.memo to avoid unecessary rerenders, and Lazy loading to load only the items who are currently visible to the users in the screen
 
-### `O layout foi construido utilizando grid e flexbox para deixar a aplicação completamente responsiva`
+### `The layout was built using grid and flexbox to make it fully responsive`
 
-## Site com o tema de água em produção
-https://ecommercepokeshop.netlify.app/
-
-### Rodar a aplicação localmente
-Basta entrar na pasta com o tema que deseja reproduzir e rodar os comandos:
+### Running the app
+Just cd into one of the two folders and run:
 
 `$ npm install`
-e
-
+and
 `$ npm start`
